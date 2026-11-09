@@ -33,6 +33,12 @@ Se cancelli l'app dalla Home o i dati del sito da Safari, gli appunti si perdono
 - Il PDF esportato contiene le pagine come immagini (non testo selezionabile).
 - Scorciatoie da tastiera ⌘ funzionano solo con tastiera collegata.
 
+## Novità della versione 1.7.0
+- **Animazioni** ovunque: libreria, taccuini, menu, finestre, barra strumenti, cestino e sblocco.
+- **Foglio non più ruotabile**: con due dita resti in zoom e spostamento, il foglio rimane sempre dritto.
+- **Tutorial e primo avvio a passi**: "Benvenuto in Taccuino", 3 schermate di tutorial (si possono saltare), poi nome, età, uso e blocco, **una domanda alla volta**.
+- **Blocco app con Face ID / Touch ID**: lo scegli alla fine del primo avvio o dall'ingranaggio ("Blocco app"). Serve sempre anche un **codice a 4 cifre di riserva**. Se il tuo iPad o il modo in cui installi l'app non consente Face ID (succede con alcune installazioni .ipa), l'app usa solo il codice. Si riblocca dopo 30 secondi in background. Attenzione: se dimentichi il codice l'unico modo per rientrare è reinstallare l'app, e i dati si perdono.
+
 ## Novità della versione 1.6.0
 - **Matita a pressione**: più premi con la Apple Pencil, più il tratto è scuro e grosso; leggero = sottile e chiaro. Con il dito o il mouse il tratto resta di spessore medio.
 - **Gomma a pressione**: la gomma diventa più grande premendo di più (lo slider fissa la misura massima). Funziona a pixel o a tratto.
@@ -45,7 +51,7 @@ Se cancelli l'app dalla Home o i dati del sito da Safari, gli appunti si perdono
 - **Blocco del foglio**: l'icona del lucchetto in alto blocca scorrimento, zoom e rotazione, così il foglio non si sposta mentre scrivi (e i tocchi accidentali non fanno annulla).
 - **Penna più reattiva**: tratti disegnati subito e con tutti i punti anche scrivendo veloce, il palmo appoggiato viene ignorato. Rimossi i vari tipi di penna: ora c'è una penna e un evidenziatore.
 - **Geometria**: 22 forme (linea, tratteggiata, frecce, misura in cm, quadrato, cerchio, triangoli, rombo, trapezio, pentagono, esagono, stella, croce, assi cartesiani, cubo, griglia...). Tocca lo strumento Forme per sceglierle.
-- **Ruotare il foglio**: appoggia due dita sullo schermo e ruotale (anche zoom e spostamento). Vicino a 0°/90° il foglio si aggancia; l'icona "raddrizza" lo rimette dritto.
+- ~~Ruotare il foglio~~: rimosso nella 1.7.0 (restano zoom con due dita e spostamento).
 - **Primo avvio**: chiede nome, età (minimo 10 anni) e per cosa usi Taccuino. In alto compare "Ciao, nome". Dall'ingranaggio puoi modificare il profilo. I dati restano solo sul tuo iPad.
 - **Taccuini**: i tre pallini aprono Cestina, Rinomina, Sposta a… Puoi anche trascinare un taccuino su una cartella (tocco: tieni premuto un attimo, poi trascina).
 - **Cestino** in basso a destra nella home: ripristina o elimina definitivamente i taccuini cestinati.

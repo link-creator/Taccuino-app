@@ -83,6 +83,57 @@ button.g{background:var(--cd);border:1px solid var(--ln);border-radius:12px;padd
 .trow .tt{flex:1;min-width:0}.trow b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.trow small{color:var(--sub)}.trow button.g{padding:7px 12px;font-size:13px;border-radius:10px}
 #ercur{position:fixed;display:none;border:1.5px solid var(--ac);background:#12b0ff22;border-radius:50%;pointer-events:none;z-index:40}
 .geo{display:grid;grid-template-columns:repeat(4,78px);gap:6px;padding:4px 8px 8px}.gb{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 2px;border-radius:12px;font-size:10px;line-height:1.1;text-align:center;border:1px solid var(--ln)}.gb.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+
+/* animazioni */
+@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes fadeout{to{opacity:0;transform:scale(1.03)}}
+@keyframes popin{from{opacity:0;transform:scale(.92) translateY(-6px)}to{opacity:1;transform:none}}
+@keyframes boxin{from{opacity:0;transform:translateY(24px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes cardin{from{opacity:0;transform:translateY(18px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes edin{from{opacity:0;transform:scale(.985) translateY(10px)}to{opacity:1;transform:none}}
+@keyframes libin{from{opacity:0;transform:scale(1.015)}to{opacity:1;transform:none}}
+@keyframes tbin{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:none}}
+@keyframes tabpop{0%{transform:scale(.8)}60%{transform:scale(1.14)}100%{transform:scale(1)}}
+@keyframes inr{from{opacity:0;transform:translateX(60px)}to{opacity:1;transform:none}}
+@keyframes inl{from{opacity:0;transform:translateX(-60px)}to{opacity:1;transform:none}}
+@keyframes logo{from{opacity:0;transform:scale(.3) rotate(-12deg)}to{opacity:1;transform:none}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes blob{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.15)}}
+@keyframes shake{0%,100%{transform:none}20%{transform:translateX(-10px)}40%{transform:translateX(10px)}60%{transform:translateX(-7px)}80%{transform:translateX(7px)}}
+@keyframes ckc{from{stroke-dashoffset:150}to{stroke-dashoffset:0}}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.ib,.pill,.chip,button.g,.sw,.cw,.gb,#pop .row{transition:background .18s,transform .15s,box-shadow .2s,border-color .2s,color .2s}
+.ib.on{animation:tabpop .28s}.pill:hover{box-shadow:0 4px 14px #0003;transform:translateY(-1px)}.pill:active{transform:scale(.95)}
+.chip:hover{transform:translateY(-1px)}.chip:active{transform:scale(.95)}.sw:hover,.cw:hover{transform:scale(1.18)}.gb:hover{transform:translateY(-2px);border-color:var(--ac)}
+#lib:not(.hide){animation:libin .35s ease-out}#ed:not(.hide){animation:edin .35s ease-out}
+#tbi{animation:tbin .5s cubic-bezier(.2,.9,.3,1) both}#nav{animation:fade .4s}
+.card{animation:cardin .45s cubic-bezier(.2,.9,.3,1) both}.card:nth-child(1){animation-delay:45ms}.card:nth-child(2){animation-delay:90ms}.card:nth-child(3){animation-delay:135ms}.card:nth-child(4){animation-delay:180ms}.card:nth-child(5){animation-delay:225ms}.card:nth-child(6){animation-delay:270ms}.card:nth-child(7){animation-delay:315ms}.card:nth-child(8){animation-delay:360ms}.card:nth-child(9){animation-delay:405ms}.card:nth-child(10){animation-delay:450ms}.card:nth-child(11){animation-delay:495ms}.card:nth-child(12){animation-delay:540ms}.card:nth-child(13){animation-delay:585ms}.card:nth-child(14){animation-delay:630ms}.card:nth-child(15){animation-delay:675ms}
+.card .th{transition:transform .22s cubic-bezier(.2,.9,.3,1),box-shadow .22s,border-color .2s}.card:hover .th{transform:translateY(-5px);box-shadow:0 10px 24px #0003}.card:active .th{transform:scale(.97)}
+.card.new:hover svg{transform:rotate(90deg) scale(1.1)}.card.new svg{transition:transform .3s}
+#pop:not(.hide){animation:popin .17s ease-out;transform-origin:top right}.selbar{animation:popin .17s ease-out}
+#dlg:not(.hide){animation:fade .25s}#dlg:not(.hide) .box{animation:boxin .4s cubic-bezier(.2,1.2,.4,1)}
+#busy:not(.hide){animation:fade .2s}.trow{animation:up .3s both}#trbtn{transition:transform .2s}#trbtn:hover{transform:scale(1.08)}#trbtn:active{transform:scale(.92)}
+#trbtn .bdg{animation:tabpop .4s}
+#ob,#lock{position:fixed;inset:0;z-index:70;background:var(--bg);display:flex;align-items:center;justify-content:center;overflow:hidden;animation:fade .45s}#lock{z-index:90}
+#ob.out,#lock.out{animation:fadeout .38s forwards}
+#ob .b1,#ob .b2,#lock .b1,#lock .b2{position:absolute;width:420px;height:420px;border-radius:50%;background:var(--ac);filter:blur(90px);opacity:.28;animation:blob 9s ease-in-out infinite}
+#ob .b1,#lock .b1{left:-120px;top:-100px}#ob .b2,#lock .b2{right:-140px;bottom:-120px;animation-delay:-4s;background:#7c5cff}
+.obp{position:absolute;top:env(safe-area-inset-top,0);left:0;right:0;height:5px;background:var(--ln)}.obp div{height:100%;width:0;background:var(--ac);border-radius:0 3px 3px 0;transition:width .55s cubic-bezier(.2,.9,.3,1)}
+.obc{position:relative;width:min(92vw,460px);text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.obs{min-height:340px;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.obs.inr{animation:inr .5s cubic-bezier(.2,.9,.3,1) both}.obs.inl{animation:inl .5s cubic-bezier(.2,.9,.3,1) both}
+.obs h1{font-size:38px;margin:6px 0 0;font-weight:800}.obs h2,.obc>h2{font-size:28px;margin:0;font-weight:800}.obs p{color:var(--sub);margin:0;max-width:380px;line-height:1.45;font-size:16px}
+.obs>*{animation:up .5s both}.obs>*:nth-child(2){animation-delay:.08s}.obs>*:nth-child(3){animation-delay:.16s}.obs>*:nth-child(4){animation-delay:.24s}
+.logo{width:120px;height:120px;border-radius:28px;box-shadow:0 14px 40px #0005;animation:logo 1s cubic-bezier(.2,1.5,.4,1) both}
+.big{width:100px;height:100px;border-radius:50%;background:var(--ac);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px #12b0ff55}.big svg{width:48px;height:48px;stroke-width:1.6}
+.obs .big{animation:logo .7s cubic-bezier(.2,1.5,.4,1) both,floaty 3.2s ease-in-out .8s infinite}
+.obs input{width:100%;font-size:24px;text-align:center;padding:14px;border-radius:16px;margin-top:6px}
+.obe{color:#e63946;min-height:22px;font-size:14px}.obn{display:flex;gap:10px;justify-content:center;margin-top:4px;min-height:48px}.obn .pill{padding:13px 32px;font-size:16px}.obn .g{padding:12px 20px}
+.obn2{display:flex;flex-direction:column;gap:10px;margin-top:6px}.obn2 .pill{padding:13px 32px;font-size:16px;justify-content:center}.obn2 .g{padding:12px}
+.ck{width:110px;height:110px;fill:none;stroke:var(--ac);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.ck circle,.ck path{stroke-dasharray:150;animation:ckc .8s .2s ease-out both}.ck path{animation-delay:.7s}
+.dots{display:flex;gap:16px;justify-content:center;margin:12px 0 18px}.dots i{width:16px;height:16px;border-radius:50%;border:2px solid var(--ac);transition:.15s;display:block}.dots i.on{background:var(--ac);transform:scale(1.2)}.dots.sh{animation:shake .4s}
+.pad{display:grid;grid-template-columns:repeat(3,74px);gap:12px;justify-content:center}.pad button{height:74px;border-radius:50%;background:var(--cd);border:1px solid var(--ln);font-size:26px;transition:transform .1s,background .1s}.pad button:active{transform:scale(.9);background:var(--ln)}.pad button.e{visibility:hidden}
+.uses{justify-content:center}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style></head><body>
 
 <div id="lib">
@@ -95,7 +146,7 @@ button.g{background:var(--cd);border:1px solid var(--ln);border-radius:12px;padd
  <div id="nav">
   <button class="ib" id="back"></button><input id="title"><span class="sp"></span>
   <button class="ib" id="imb"></button><input type="file" id="imf" accept="image/*" class="hide">
-  <button class="ib" id="pm"></button><button class="ib" id="lk"></button><button class="ib hide" id="rst"></button>
+  <button class="ib" id="pm"></button><button class="ib" id="lk"></button>
   <button class="ib" id="un"></button><button class="ib" id="re"></button>
   <button class="ib" id="stb"></button><button class="ib" id="exb"></button>
  </div>
@@ -105,6 +156,7 @@ button.g{background:var(--cd);border:1px solid var(--ln);border-radius:12px;padd
 <div id="pop" class="hide"></div>
 <div id="busy" class="hide"><div></div></div>
 <div id="dlg" class="hide"><div class="box"></div></div>
+<div id="ob" class="hide"></div><div id="lock" class="hide"></div>
 <input type="file" id="impf" class="hide">
 <script>window.loadPdfJs=()=>window.pdfjsLib?Promise.resolve():new Promise(r=>{const t=(u,f)=>{const e=document.createElement("script");e.src=u;e.onload=()=>r();e.onerror=f;document.head.append(e)};t("lib/pdf.min.js",()=>t("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js",()=>r()))})</script>
 
@@ -163,6 +215,30 @@ const NEWL3=[{pm:'Modalità Apple Pencil',pmd:'Solo Apple Pencil (ignora il palm
 {pm:'Modo Apple Pencil',pmd:'Solo Apple Pencil (ignora la palma)',pc:'Lápiz de presión',ep:'Borrador de presión',fill:'Rellenar color'}];
 NEWL3.forEach((o,i)=>{const{pc,ep,fill,...r}=o;Object.assign(NEWL[i],r);NEWL[i].tools={pc,ep,fill}});
 NEWL.forEach((o,i)=>{const{S:ss,tools:tl,...r}=o;if(tl)Object.assign(L[i].tools,tl);Object.assign(L[i],r);Object.assign(L[i].S,ss)});
+
+const NEWL4=[
+{obw:'Benvenuto in Taccuino',obws:'Il tuo quaderno digitale per scrivere, disegnare e studiare.',go:'Inizia',nx:'Avanti',bk:'Indietro',skp:'Salta tutorial',
+ t1t:'Scrivi come su carta',t1d:'Con la Apple Pencil il tratto cambia con la pressione e il palmo appoggiato viene ignorato.',
+ t2t:'Tanti strumenti',t2d:'Matita, gomma, evidenziatore, riempimento colore, forme, tabelle e selezione per spostare e copiare.',
+ t3t:'Tutto in ordine',t3d:'Organizza in cartelle, importa PDF e file .fulnote e ritrova tutto nel cestino.',
+ bioT:'Proteggere Taccuino?',bioD:'Puoi sbloccare l’app con Face ID o Touch ID.',bioOn:'Attiva Face ID / Touch ID',bioNo:'Non ora',bioNA:'Face ID non è disponibile qui, userai un codice.',bioCancel:'Operazione annullata. Riprova o scegli "Non ora".',
+ pinT:'Scegli un codice a 4 cifre',pinD:'Ti servirà per sbloccare l’app.',pinB:'Codice di riserva',pinBD:'Se Face ID non funziona potrai sbloccare con questo codice. Non dimenticarlo.',pin2:'Ripeti il codice',pinErr:'I codici non coincidono, riprova.',
+ lockT:'Taccuino è bloccato',bioBtn:'Sblocca con Face ID',wrongPin:'Codice errato',rdy:'Tutto pronto',rdyD:'Buon lavoro con Taccuino.',slk:'Blocco app (Face ID / codice)',lockOffQ:'Disattivare il blocco dell’app?'},
+{obw:'Welcome to Taccuino',obws:'Your digital notebook for writing, drawing and studying.',go:'Start',nx:'Next',bk:'Back',skp:'Skip tutorial',
+ t1t:'Write like on paper',t1d:'With Apple Pencil the stroke changes with pressure and your resting palm is ignored.',
+ t2t:'Lots of tools',t2d:'Pencil, eraser, highlighter, fill color, shapes, tables and selection to move and copy.',
+ t3t:'Everything in order',t3d:'Organize in folders, import PDF and .fulnote files and find everything in the trash.',
+ bioT:'Protect Taccuino?',bioD:'You can unlock the app with Face ID or Touch ID.',bioOn:'Turn on Face ID / Touch ID',bioNo:'Not now',bioNA:'Face ID is not available here, you will use a passcode.',bioCancel:'Cancelled. Try again or choose "Not now".',
+ pinT:'Choose a 4-digit code',pinD:'You will need it to unlock the app.',pinB:'Backup code',pinBD:'If Face ID does not work you can unlock with this code. Do not forget it.',pin2:'Repeat the code',pinErr:'Codes do not match, try again.',
+ lockT:'Taccuino is locked',bioBtn:'Unlock with Face ID',wrongPin:'Wrong code',rdy:'All set',rdyD:'Enjoy Taccuino.',slk:'App lock (Face ID / code)',lockOffQ:'Turn off the app lock?'},
+{obw:'Bienvenido a Taccuino',obws:'Tu cuaderno digital para escribir, dibujar y estudiar.',go:'Empezar',nx:'Siguiente',bk:'Atrás',skp:'Saltar tutorial',
+ t1t:'Escribe como en papel',t1d:'Con Apple Pencil el trazo cambia con la presión y la palma apoyada se ignora.',
+ t2t:'Muchas herramientas',t2d:'Lápiz, borrador, resaltador, relleno de color, formas, tablas y selección para mover y copiar.',
+ t3t:'Todo en orden',t3d:'Organiza en carpetas, importa PDF y archivos .fulnote y encuentra todo en la papelera.',
+ bioT:'¿Proteger Taccuino?',bioD:'Puedes desbloquear la app con Face ID o Touch ID.',bioOn:'Activar Face ID / Touch ID',bioNo:'Ahora no',bioNA:'Face ID no está disponible aquí, usarás un código.',bioCancel:'Cancelado. Reintenta o elige "Ahora no".',
+ pinT:'Elige un código de 4 dígitos',pinD:'Lo necesitarás para desbloquear la app.',pinB:'Código de respaldo',pinBD:'Si Face ID falla podrás desbloquear con este código. No lo olvides.',pin2:'Repite el código',pinErr:'Los códigos no coinciden, reinténtalo.',
+ lockT:'Taccuino está bloqueado',bioBtn:'Desbloquear con Face ID',wrongPin:'Código incorrecto',rdy:'Todo listo',rdyD:'Disfruta Taccuino.',slk:'Bloqueo de app (Face ID / código)',lockOffQ:'¿Desactivar el bloqueo de la app?'}];
+NEWL4.forEach((o,i)=>Object.assign(L[i],o));
 const T=L[api.lang]||L[0],$=id=>document.getElementById(id);
 /* tipi di penna ed evidenziatore: wm = moltiplicatore spessore, a = opacità, v = larghezza variabile (1 stilografica, 2 pennello) */
 const KINDS={
@@ -190,7 +266,7 @@ function pmSet(v){S.set.pm=v;if(v)S.set.touch=false;pmBtn();save()}
 function theme(){document.body.classList.toggle('dk',!!S.set.dark);document.documentElement.style.setProperty('--ac',S.set.ac)}
 
 $('q').placeholder=T.q;$('title').placeholder=T.ti;$('addn').innerHTML=ic('plus')+T.nw;$('impb').innerHTML=ic('imp')+T.imp;$('gear').innerHTML=ic('gear');
-$('back').innerHTML=ic('back');$('un').innerHTML=ic('undo');$('re').innerHTML=ic('redo');$('stb').innerHTML=ic('grid');$('exb').innerHTML=ic('ex');$('imb').innerHTML=ic('img');$('rst').innerHTML=ic('rot');pmBtn();
+$('back').innerHTML=ic('back');$('un').innerHTML=ic('undo');$('re').innerHTML=ic('redo');$('stb').innerHTML=ic('grid');$('exb').innerHTML=ic('ex');$('imb').innerHTML=ic('img');pmBtn();
 
 /* popover */
 function pop(anchor,html,setup,side){const p=$('pop');p.innerHTML=html;p.classList.remove('hide');const r=anchor.getBoundingClientRect();
@@ -204,12 +280,14 @@ const menu=(anchor,items,side)=>pop(anchor,items.map((x,i)=>'<div class="row" da
 $('gear').onclick=e=>pop(e.currentTarget,
  '<div class="row" id="spf">'+ic('edit')+' '+T.prof+'</div><label>'+T.lang+'</label><select id="sl"><option>Italiano</option><option>English</option><option>Español</option></select>'+
  '<div class="row" id="sd"><input type="checkbox" '+(S.set.dark?'checked':'')+'> '+T.dark+'</div>'+
+ '<div class="row" id="slk"><input type="checkbox" '+(S.set.lock?'checked':'')+'> '+T.slk+'</div>'+
  '<div class="row" id="spm"><input type="checkbox" '+(pmOn()?'checked':'')+'> '+T.pmd+'</div>'+
  '<div class="row" id="stc"><input type="checkbox" '+(S.set.touch?'checked':'')+'> '+T.touch+'</div>'+
  '<label>'+T.theme+'</label><div class="th">'+THEMES.map(c=>'<i data-c="'+c+'" style="background:'+c+'" class="'+(S.set.ac===c?'on':'')+'"></i>').join('')+'</div>',
  p=>{$('spf').onclick=()=>{$('pop').classList.add('hide');onboarding(true)};$('sl').selectedIndex=api.lang;$('sl').onchange=()=>api.setLang($('sl').selectedIndex);
   $('sd').onclick=ev=>{S.set.dark=!S.set.dark;if(ev.target.tagName!=='INPUT')$('sd').firstChild.checked=S.set.dark;theme();save()};
   $('stc').onclick=ev=>{S.set.touch=!S.set.touch;if(ev.target.tagName!=='INPUT')$('stc').firstChild.checked=S.set.touch;$('spm').firstChild.checked=pmOn();pmBtn();save()};
+  $('slk').onclick=()=>{$('pop').classList.add('hide');if(S.set.lock){if(confirm(T.lockOffQ)){delete S.set.lock;save()}}else lockSetup()};
   $('spm').onclick=ev=>{pmSet(!pmOn());if(ev.target.tagName!=='INPUT')$('spm').firstChild.checked=pmOn();$('stc').firstChild.checked=!!S.set.touch};
   p.querySelectorAll('.th i').forEach(i=>i.onclick=()=>{S.set.ac=i.dataset.c;theme();save();p.querySelectorAll('.th i').forEach(x=>x.classList.toggle('on',x===i))})});
 
@@ -657,15 +735,13 @@ function cellEdit(c,pi,s,pt){const col=Math.max(0,Math.min(s.cn-1,Math.floor((pt
 /* vista: zoom, rotazione e scorrimento con le dita (gestiti a mano) */
 const zs=document.createElement('div');zs.id='zs';$('wrap').insertBefore(zs,$('pages'));zs.append($('pages'));
 function fitZoom(){const p=$('pages'),pw=p.offsetWidth,ph=p.offsetHeight,c=Math.abs(Math.cos(ROT)),s2=Math.abs(Math.sin(ROT));zs.style.width=(pw*c+ph*s2)*ZM+'px';zs.style.height=(pw*s2+ph*c)*ZM+'px'}
-function applyView(){$('pages').style.transform='translate(-50%,-50%) scale('+ZM+') rotate('+ROT+'rad)';fitZoom();$('rst').classList.toggle('hide',Math.abs(ROT)<.01)}
+function applyView(){$('pages').style.transform='translate(-50%,-50%) scale('+ZM+') rotate('+ROT+'rad)';fitZoom()}
 new ResizeObserver(fitZoom).observe($('pages'));
 /* il punto (fx,fy) dello schermo che sta sotto il dito va portato in (tx,ty) */
 function setView(z,rot,fx,fy,tx,ty){z=Math.max(.4,Math.min(3,z));const w=$('wrap'),r0=$('pages').getBoundingClientRect(),
   k=Math.cos(-ROT),s2=Math.sin(-ROT),dx=(fx-r0.left-r0.width/2)/ZM,dy=(fy-r0.top-r0.height/2)/ZM,lx=dx*k-dy*s2,ly=dx*s2+dy*k;
  ZM=z;ROT=rot;applyView();const r1=$('pages').getBoundingClientRect(),k2=Math.cos(ROT),s3=Math.sin(ROT),
   sx=r1.left+r1.width/2+(lx*k2-ly*s3)*ZM,sy=r1.top+r1.height/2+(lx*s3+ly*k2)*ZM;w.scrollLeft+=sx-tx;w.scrollTop+=sy-ty}
-function snapRot(){const q=Math.PI/2,n=Math.round(ROT/q)*q;if(Math.abs(ROT-n)<.07){const r=$('wrap').getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;setView(ZM,n,cx,cy,cx,cy)}}
-$('rst').onclick=()=>{const r=$('wrap').getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;setView(ZM,0,cx,cy,cx,cy)};
 function setLock(v,ns){LOCK=v;S.set.lock=v;$('lk').innerHTML=ic(v?'lock':'unlock');$('lk').classList.toggle('on',v);$('lk').title=v?T.unlock:T.lock;$('wrap').style.overflow=v?'hidden':'';if(v){pan=null;pz=null;stopInertia()}if(!ns)save()}
 $('lk').onclick=()=>setLock(!LOCK);
 $('pm').onclick=()=>pmSet(!pmOn());
@@ -681,13 +757,13 @@ wrapEl.addEventListener('touchstart',e=>{stopInertia();if(!okTouch(e)){pan=null;
  else if(e.touches.length===1&&!fingerDraw()){pz=null;pan={x:e.touches[0].clientX,y:e.touches[0].clientY,vx:0,vy:0,t:e.timeStamp}}
  else{pan=null;pz=null}},{passive:true});
 wrapEl.addEventListener('touchmove',e=>{if(!okTouch(e)){pan=null;pz=null;return}
- if(pz&&e.touches.length===2){e.preventDefault();const t=e.touches,m=tmid(t),d=tdist(t)||1,a=tang(t);let da=a-pz.a;while(da>Math.PI)da-=2*Math.PI;while(da<-Math.PI)da+=2*Math.PI;
-  if(Math.abs(d/pz.d-1)>.03||Math.abs(da)>.05)tmoved=true;
-  setView(ZM*d/pz.d,ROT+da,pz.m[0],pz.m[1],m[0],m[1]);pz={d,a,m}}
+ if(pz&&e.touches.length===2){e.preventDefault();const t=e.touches,m=tmid(t),d=tdist(t)||1,a=tang(t);
+  if(Math.abs(d/pz.d-1)>.03)tmoved=true;
+  setView(ZM*d/pz.d,0,pz.m[0],pz.m[1],m[0],m[1]);pz={d,a,m}}
  else if(pan&&e.touches.length===1){e.preventDefault();const t=e.touches[0],dx=t.clientX-pan.x,dy=t.clientY-pan.y,dt=Math.max(8,e.timeStamp-pan.t);
   wrapEl.scrollLeft-=dx;wrapEl.scrollTop-=dy;pan.vx=dx/dt*.6+pan.vx*.4;pan.vy=dy/dt*.6+pan.vy*.4;pan.x=t.clientX;pan.y=t.clientY;pan.t=e.timeStamp}},{passive:false});
 ['touchend','touchcancel'].forEach(ev=>wrapEl.addEventListener(ev,e=>{
- if(pz&&e.touches.length<2){pz=null;snapRot()}
+ if(pz&&e.touches.length<2){pz=null}
  if(pan&&e.touches.length===0){const p=pan;pan=null;if(ev==='touchend'&&e.timeStamp-p.t<90&&Math.hypot(p.vx,p.vy)>.05){let vx=p.vx,vy=p.vy;
   const step=()=>{wrapEl.scrollLeft-=vx*16;wrapEl.scrollTop-=vy*16;vx*=.95;vy*=.95;inertia=Math.hypot(vx,vy)>.02?requestAnimationFrame(step):0};step()}}},{passive:true}));
 wrapEl.addEventListener('wheel',e=>{if(!cur)return;if(LOCK){e.preventDefault();return}if(!e.ctrlKey)return;e.preventDefault();e.stopImmediatePropagation();setView(ZM*Math.exp(-e.deltaY*.01),ROT,e.clientX,e.clientY,e.clientX,e.clientY)},{passive:false,capture:true});
@@ -736,26 +812,76 @@ document.addEventListener('drop',e=>{e.preventDefault();$('lib').classList.remov
 /* profilo: nome, età e uso (la prima volta) */
 const USES=['school','uni','work','personal','creative','other'];
 function greet(){const h=document.querySelector('#lh h1'),pr=S.profile;h.textContent=pr&&pr.name?T.hello+', '+pr.name:'Taccuino'}
-function onboarding(edit){const pr=S.profile||{};let use=pr.use||'';
- dlg('<h2>'+(edit?T.prof:T.wel)+'</h2>'+(edit?'':'<p class="sub">'+T.welsub+'</p>')+
-  '<label>'+T.nm+'</label><input id="obn" maxlength="30" autocomplete="off" style="width:100%">'+
-  '<label>'+T.age+'</label><input id="oba" type="number" inputmode="numeric" min="10" max="120" style="width:100%">'+
-  '<label>'+T.use+'</label><div class="uses">'+USES.map(u=>'<button class="chip" data-u="'+u+'">'+T.u[u]+'</button>').join('')+'</div>'+
-  '<div class="err" id="obe"></div><div class="btns">'+(edit?'<button class="g" id="obc">'+T.cancel+'</button>':'')+'<button class="pill" id="obs">'+(edit?T.save:T.start)+'</button></div>',b=>{
-  const nm=$('obn'),ag=$('oba'),er=$('obe');nm.value=pr.name||'';ag.value=pr.age||'';
-  const paint2=()=>b.querySelectorAll('.uses .chip').forEach(c=>c.classList.toggle('on',c.dataset.u===use));paint2();
-  b.querySelectorAll('.uses .chip').forEach(c=>c.onclick=()=>{use=c.dataset.u;er.textContent='';paint2()});
-  if($('obc'))$('obc').onclick=dlgClose;
-  $('obs').onclick=()=>{const name=nm.value.trim(),age=Math.floor(+ag.value);
-   if(!name){er.textContent=T.errNm;return}
-   if(!ag.value||!isFinite(age)||age>120){er.textContent=T.errAge;return}
-   if(age<10){er.textContent=T.errMin;return}
-   if(!use){er.textContent=T.errUse;return}
-   S.profile={name,age,use};save();dlgClose();greet()}})}
+/* biometria e codice */
+const b64=u=>btoa(String.fromCharCode(...new Uint8Array(u))),unb64=x=>Uint8Array.from(atob(x),c=>c.charCodeAt(0)),rnd=n=>crypto.getRandomValues(new Uint8Array(n));
+const bio={
+ async avail(){try{return !!(window.PublicKeyCredential&&navigator.credentials&&window.isSecureContext&&await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable())}catch(e){return false}},
+ async reg(){const c=await navigator.credentials.create({publicKey:{challenge:rnd(32),rp:{name:'Taccuino'},user:{id:rnd(16),name:'taccuino',displayName:(S.profile&&S.profile.name)||'Taccuino'},pubKeyCredParams:[{type:'public-key',alg:-7},{type:'public-key',alg:-257}],authenticatorSelection:{authenticatorAttachment:'platform',userVerification:'required'},timeout:60000}});return b64(c.rawId)},
+ async auth(id){await navigator.credentials.get({publicKey:{challenge:rnd(32),allowCredentials:[{type:'public-key',id:unb64(id)}],userVerification:'required',timeout:60000}})}};
+async function hpin(p){try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('taccuino:'+p));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}catch(e){let h=5381;for(const c of 'taccuino:'+p)h=(h*33^c.charCodeAt(0))>>>0;return'x'+h}}
+function pinPad(el,onDone){let v='';el.innerHTML='<div class="dots"><i></i><i></i><i></i><i></i></div><div class="pad">'+[1,2,3,4,5,6,7,8,9,'',0,'<'].map(k=>'<button '+(k===''?'class="e"':'data-k="'+k+'"')+'>'+(k==='<'?'⌫':k)+'</button>').join('')+'</div>';
+ const dots=el.querySelectorAll('.dots i'),dw=el.querySelector('.dots'),upd=()=>dots.forEach((d,k)=>d.classList.toggle('on',k<v.length)),api2={shake(){dw.classList.remove('sh');void dw.offsetWidth;dw.classList.add('sh')}};
+ el.querySelectorAll('.pad button[data-k]').forEach(b=>b.onclick=()=>{const k=b.dataset.k;if(k==='<')v=v.slice(0,-1);else if(v.length<4)v+=k;upd();
+  if(v.length===4){const x=v;v='';setTimeout(upd,200);onDone(x)}});
+ return api2}
+let hiddenAt=0;
+function showLock(){const l=$('lock'),Lk=S.set.lock;if(!Lk)return;l.classList.remove('hide','out');
+ l.innerHTML='<i class="b1"></i><i class="b2"></i><div class="obc"><img class="logo" src="icons/icon-192.png"><h2>'+T.lockT+'</h2><div class="pp" style="margin-top:14px"></div><div class="obe"></div>'+(Lk.t==='bio'?'<button class="pill" id="lkb">'+ic('pm')+' '+T.bioBtn+'</button>':'')+'</div>';
+ const er=l.querySelector('.obe'),ok=()=>{l.classList.add('out');setTimeout(()=>{l.classList.add('hide');l.innerHTML=''},380)},
+  tryBio=async()=>{try{await bio.auth(Lk.id);ok()}catch(e){}},
+  pad=pinPad(l.querySelector('.pp'),async x=>{if(await hpin(x)===Lk.h)ok();else{pad.shake();er.textContent=T.wrongPin;setTimeout(()=>er.textContent='',1500)}});
+ if(Lk.t==='bio'){$('lkb').onclick=tryBio;setTimeout(tryBio,450)}}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)hiddenAt=Date.now();else if(S.set.lock&&hiddenAt&&Date.now()-hiddenAt>30000&&$('lock').classList.contains('hide'))showLock()});
+
+/* procedura guidata a schermo intero, un passo alla volta */
+function wizard(steps,fin,cancel,init){
+ const D=Object.assign({},init||{});let i=0,dir=1;const ob=$('ob');
+ ob.classList.remove('hide','out');
+ ob.innerHTML='<i class="b1"></i><i class="b2"></i><div class="obp"><div></div></div><div class="obc"><div class="obs"></div><div class="obe"></div><div class="obn"></div></div>';
+ const st=ob.querySelector('.obs'),er=ob.querySelector('.obe'),nv=ob.querySelector('.obn'),bar=ob.querySelector('.obp div');
+ const ctx={D,err:m=>{er.textContent=m||''},next:()=>go(1)};
+ const close=()=>{ob.classList.add('out');setTimeout(()=>{ob.classList.add('hide');ob.innerHTML=''},380)};
+ function show(){const sp=steps[i];bar.style.width=((i+1)/steps.length*100)+'%';er.textContent='';
+  st.className='obs '+(dir>0?'inr':'inl');void st.offsetWidth;st.innerHTML='';sp.render(st,ctx);
+  nv.innerHTML=(i>0||cancel?'<button class="g" id="obb">'+(i>0?T.bk:T.cancel)+'</button>':'')+(sp.jump?'<button class="g" id="obj">'+T.skp+'</button>':'')+(sp.hideNext?'':'<button class="pill" id="obx">'+(sp.btn||(i===steps.length-1?T.save:T.nx))+'</button>');
+  if($('obb'))$('obb').onclick=()=>go(-1);if($('obx'))$('obx').onclick=()=>go(1);
+  if($('obj'))$('obj').onclick=()=>{i=steps.findIndex(x=>x.id===sp.jump);dir=1;show()};
+  const f=st.querySelector('input');if(f)setTimeout(()=>f.focus(),380)}
+ function go(d){if(d>0){const sp=steps[i],r=sp.check?sp.check(D):true;if(r!==true){er.textContent=r;return}}
+  let j=i+d;while(steps[j]&&steps[j].skip&&steps[j].skip(D))j+=d;
+  if(j<0){if(cancel){close();cancel()}return}
+  if(j>=steps.length){close();fin(D);return}
+  i=j;dir=d;show()}
+ show()}
+const applyLock=D=>{if(D.want&&D.h)S.set.lock={t:D.bio?'bio':'pin',id:D.bioId||null,h:D.h}};
+const stBio={id:'bio',hideNext:true,render:(el,c)=>{el.innerHTML='<div class="big">'+ic('pm')+'</div><h2>'+T.bioT+'</h2><p>'+T.bioD+'</p><div class="obn2"><button class="pill" id="bon">'+T.bioOn+'</button><button class="g" id="bno">'+T.bioNo+'</button></div>';
+  $('bno').onclick=()=>{c.D.want=false;c.next()};
+  $('bon').onclick=async()=>{const b=$('bon');b.disabled=true;c.D.want=true;c.D.bio=false;c.D.noBio=false;
+   try{if(await bio.avail()){c.D.bioId=await bio.reg();c.D.bio=true}else c.D.noBio=true}
+   catch(e){if(e&&e.name==='NotAllowedError'){c.err(T.bioCancel);b.disabled=false;return}c.D.noBio=true}
+   b.disabled=false;c.next()}}};
+const stPin={id:'pin',hideNext:true,skip:D=>!D.want,render:(el,c)=>{let first='';
+  el.innerHTML='<h2></h2><p></p><div class="pp"></div>';const h=el.querySelector('h2'),p=el.querySelector('p');
+  const set=()=>{h.textContent=first?T.pin2:(c.D.bio?T.pinB:T.pinT);p.textContent=first?'':(c.D.bio?T.pinBD:(c.D.noBio?T.bioNA+' '+T.pinD:T.pinD))};set();
+  const pad=pinPad(el.querySelector('.pp'),async x=>{if(!first){first=x;set();return}if(x!==first){first='';pad.shake();c.err(T.pinErr);set();return}c.D.h=await hpin(x);c.next()})}};
+function lockSetup(){wizard([stBio,stPin],D=>{applyLock(D);save()},()=>{})}
+
+function onboarding(edit){const pr=S.profile||{};
+ const tour=(id,ico,t,d,jump)=>({id,jump,render:el=>{el.innerHTML='<div class="big">'+ic(ico)+'</div><h2>'+t+'</h2><p>'+d+'</p>'}});
+ const stName={id:'name',render:(el,c)=>{el.innerHTML='<h2>'+T.nm+'</h2><input maxlength="30" autocomplete="off" autocapitalize="words">';const f=el.querySelector('input');f.value=c.D.name||'';f.oninput=()=>{c.D.name=f.value;c.err('')};f.onkeydown=e=>{if(e.key==='Enter')c.next()}},check:D=>(D.name||'').trim()?true:T.errNm};
+ const stAge={id:'age',render:(el,c)=>{el.innerHTML='<h2>'+T.age+'</h2><input type="number" inputmode="numeric" min="10" max="120">';const f=el.querySelector('input');f.value=c.D.age||'';f.oninput=()=>{c.D.age=f.value;c.err('')};f.onkeydown=e=>{if(e.key==='Enter')c.next()}},
+  check:D=>{const a=Math.floor(+D.age);if(!D.age||!isFinite(a)||a>120)return T.errAge;if(a<10)return T.errMin;return true}};
+ const stUse={id:'use',btn:edit?T.save:T.nx,render:(el,c)=>{el.innerHTML='<h2>'+T.use+'</h2><div class="uses">'+USES.map(u=>'<button class="chip" data-u="'+u+'">'+T.u[u]+'</button>').join('')+'</div>';
+  const pt=()=>el.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x.dataset.u===c.D.use));pt();el.querySelectorAll('.chip').forEach(x=>x.onclick=()=>{c.D.use=x.dataset.u;c.err('');pt()})},check:D=>D.use?true:T.errUse};
+ const stDone={id:'done',btn:T.go,render:(el,c)=>{el.innerHTML='<svg class="ck" viewBox="0 0 52 52"><circle cx="26" cy="26" r="23"/><path d="M15 27l8 8 14-16"/></svg><h2>'+T.rdy+', '+String(c.D.name||'').trim()+'!</h2><p>'+T.rdyD+'</p>'}};
+ const stWel={id:'wel',btn:T.go,jump:'name',render:el=>{el.innerHTML='<img class="logo" src="icons/icon-192.png"><h1>'+T.obw+'</h1><p>'+T.obws+'</p>'}};
+ const save2=D=>{S.profile={name:String(D.name).trim(),age:Math.floor(+D.age),use:D.use};applyLock(D);save();greet()};
+ if(edit)wizard([stName,stAge,stUse],save2,()=>{},{name:pr.name,age:pr.age,use:pr.use});
+ else wizard([stWel,tour('t1','pc',T.t1t,T.t1d,'name'),tour('t2','fill',T.t2t,T.t2d,'name'),tour('t3','folder',T.t3t,T.t3d,'name'),stName,stAge,stUse,stBio,stPin,stDone],save2)}
 
 /* avvio */
 (async()=>{const d=await api.load();
  if(d&&d.notes){S=Object.assign(S,d);S.set=Object.assign({dark:false,ac:THEMES[0],recent:[],touch:false},d.set);
   S.notes.forEach(n=>{if(!n.pages){n.pages=[{strokes:n.strokes||[]}];delete n.strokes}})}
- color=QUICK[0];theme();renderLib();if(!S.profile||!S.profile.name)onboarding(false)})();
+ color=QUICK[0];theme();renderLib();if(S.set.lock)showLock();if(!S.profile||!S.profile.name)onboarding(false)})();
 </script></body></html>
