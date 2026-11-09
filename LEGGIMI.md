@@ -33,11 +33,26 @@ Se cancelli l'app dalla Home o i dati del sito da Safari, gli appunti si perdono
 - Il PDF esportato contiene le pagine come immagini (non testo selezionabile).
 - Scorciatoie da tastiera ⌘ funzionano solo con tastiera collegata.
 
+## Novità della versione 1.9.1
+- **Scrivere su PDF**: già presente. Importa il PDF dalla home ("Importa → Importa PDF"): ogni pagina diventa un foglio su cui scrivi, disegni, evidenzi, firmi e metti timbri.
+- **Scrivere su foto**: già presente. Con l'icona delle immagini in alto inserisci una foto nel foglio e ci scrivi sopra con qualsiasi penna.
+- **Copiare solo una parte di una foto (novità)**: con "Seleziona" tocca la foto, poi premi **Copia parte** nella barra che compare, e trascina un rettangolo sulla zona che ti serve. La parte scelta diventa un'immagine a sé, già selezionata sul foglio. Rimane in memoria: con l'icona **Incolla** in alto (o il tasto Incolla della barra di selezione) la incolli anche in un'altra pagina. Viene copiata solo la foto, non quello che ci hai scritto sopra.
+
+## Novità della versione 1.9.0
+- **Firma (solo Business)**: nella barra strumenti, icona della firma. "Nuova firma" apre un riquadro dove firmi con Pencil o dito (nero o blu); se sbagli, "Cancella". Puoi salvarne **fino a 10**; per aggiungerne altre elimini una con la × rossa. Per usarla tocchi la firma scelta: compare sul foglio già selezionata, la trascini e ridimensioni con "Seleziona". Le firme restano salvate sull'iPad e non vengono incluse nei file .fulnote esportati come impostazione, ma una firma inserita nel foglio sì.
+
+## Novità della versione 1.8.0 – Personal e Business
+- **Codice prodotto**: durante il tutorial l'app chiede un codice (formato `TACP-XXXX-XXXX-XXXX` o `TACB-XXXX-XXXX-XXXX`). Con un codice Business compare "Benvenuto su Taccuino Business", altrimenti "Benvenuto su Taccuino Personal". Si può cambiare dall'ingranaggio → "Codice prodotto" (per esempio per passare a Business).
+- **Strumenti solo Business**: **Righello** (in cm, si sposta trascinando la parte bassa, si ruota con il pallino azzurro a destra con scatti ogni 15°; le penne si agganciano al bordo e tracciano linee dritte), **Timbri** (APPROVATO, BOZZA, URGENTE, RICEVUTO, RIVISTO, CONFIDENZIALE, data di oggi) e **Note adesive** colorate. Timbri e note si spostano/ridimensionano con "Seleziona".
+- **900 codici** (450 Business + 450 Personal) sono nel file separato `Taccuino-Codici-Prodotto.txt` / `.csv`: tienilo privato e non metterlo su GitHub. Nell'app ci sono solo i codici cifrati (`www/keys.js`), non si possono ricavare i codici originali.
+- Importante: la verifica è offline, quindi **un codice funziona su qualsiasi iPad e può essere usato più volte**; non c'è un contatore di utilizzi. Chi ha il file `.ipa` e un codice può usarlo. Se vuoi codici monouso serve un piccolo server.
+- Rimossi: blocco con Face ID/codice. Chi aveva già la 1.7.0 vedrà una volta sola la schermata del codice prodotto.
+
 ## Novità della versione 1.7.0
 - **Animazioni** ovunque: libreria, taccuini, menu, finestre, barra strumenti, cestino e sblocco.
 - **Foglio non più ruotabile**: con due dita resti in zoom e spostamento, il foglio rimane sempre dritto.
 - **Tutorial e primo avvio a passi**: "Benvenuto in Taccuino", 3 schermate di tutorial (si possono saltare), poi nome, età, uso e blocco, **una domanda alla volta**.
-- **Blocco app con Face ID / Touch ID**: lo scegli alla fine del primo avvio o dall'ingranaggio ("Blocco app"). Serve sempre anche un **codice a 4 cifre di riserva**. Se il tuo iPad o il modo in cui installi l'app non consente Face ID (succede con alcune installazioni .ipa), l'app usa solo il codice. Si riblocca dopo 30 secondi in background. Attenzione: se dimentichi il codice l'unico modo per rientrare è reinstallare l'app, e i dati si perdono.
+- ~~Blocco app con Face ID / codice~~: rimosso nella 1.8.0, sostituito dai codici prodotto.
 
 ## Novità della versione 1.6.0
 - **Matita a pressione**: più premi con la Apple Pencil, più il tratto è scuro e grosso; leggero = sottile e chiaro. Con il dito o il mouse il tratto resta di spessore medio.
