@@ -4,7 +4,7 @@
 <meta name="apple-mobile-web-app-title" content="Taccuino"><meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#12b0ff">
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icons/icon-180.png">
-<script src="shim.js"></script><script src="keys.js"></script>
+<script src="shim.js"></script><script src="keys.js"></script><script src="config.js"></script>
 <style>html,body{height:100%;height:100dvh;overscroll-behavior:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
 body{height:100dvh!important;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}input,textarea,[contenteditable]{-webkit-user-select:text;user-select:text}</style>
 <style>
@@ -271,6 +271,8 @@ const NEWL6=[
 {sgN:'Nueva firma',sgT:'Dibuja tu firma',sgClr:'Borrar',sgSave:'Guardar',sgNone:'No hay firmas guardadas',sgMax:'Has alcanzado el máximo de 10 firmas. Elimina una para crear otra.',sgDel:'¿Eliminar esta firma?',sgEmpty:'Dibuja primero la firma.',sg:'Firma'}];
 const NEWL7=[{crop:'Copia parte',h:'Trascina sulla foto per scegliere la parte da copiare'},{crop:'Copy part',h:'Drag over the photo to choose the part to copy'},{crop:'Copiar parte',h:'Arrastra sobre la foto para elegir la parte a copiar'}];
 NEWL7.forEach((o,i)=>{L[i].sb.crop=o.crop;L[i].cropH=o.h});
+const NEWL8=[{keyNet:'Serve la connessione a internet per attivare il codice. Riprova.',keyUsed:'Questo codice \u00e8 gi\u00e0 stato usato.'},{keyNet:'An internet connection is needed to activate the code. Try again.',keyUsed:'This code has already been used.'},{keyNet:'Se necesita conexi\u00f3n a internet para activar el c\u00f3digo. Reint\u00e9ntalo.',keyUsed:'Este c\u00f3digo ya se ha usado.'}];
+NEWL8.forEach((o,i)=>Object.assign(L[i],o));
 NEWL6.forEach((o,i)=>{const{sg,...r}=o;Object.assign(L[i],r);L[i].tools.sign=sg});
 const T=L[api.lang]||L[0],$=id=>document.getElementById(id);
 /* tipi di penna ed evidenziatore: wm = moltiplicatore spessore, a = opacità, v = larghezza variabile (1 stilografica, 2 pennello) */
@@ -868,7 +870,7 @@ function wizard(steps,fin,cancel,init){
   if($('obb'))$('obb').onclick=()=>go(-1);if($('obx'))$('obx').onclick=()=>go(1);
   if($('obj'))$('obj').onclick=()=>{i=steps.findIndex(x=>x.id===sp.jump);dir=1;show()};
   const f=st.querySelector('input');if(f)setTimeout(()=>f.focus(),380)}
- function go(d){if(d>0){const sp=steps[i],r=sp.check?sp.check(D):true;if(r!==true){er.textContent=r;return}}
+ async function go(d){if(d>0){const sp=steps[i];let r=true;if(sp.check){const bx=$('obx');if(bx)bx.disabled=true;er.textContent=sp.wait||'';try{r=await sp.check(D)}catch(e){r=T.keyNet}if(bx)bx.disabled=false;if(r!==true){er.textContent=r;return}er.textContent=''}}
   let j=i+d;while(steps[j]&&steps[j].skip&&steps[j].skip(D))j+=d;
   if(j<0){if(cancel){close();cancel()}return}
   if(j>=steps.length){close();fin(D);return}
@@ -888,11 +890,14 @@ function sha256(str){const by=new TextEncoder().encode(str),l=by.length,n=((l+9+
  return H.map(x=>x.toString(16).padStart(8,'0')).join('')}
 function keyCheck(t){if(t.length!==16||!window.TK)return null;const h=sha256('taccuino-keys-v1:'+t).slice(0,20);
  if(TK.b.includes(h))return{ed:'business',h};if(TK.p.includes(h))return{ed:'personal',h};return null}
-const isBiz=()=>S.set.ed==='business';
-const stKey={id:'key',render:(el,c)=>{el.innerHTML='<div class="big">'+ic('key')+'</div><h2>'+T.keyT+'</h2><p>'+T.keyD+'</p><input class="kin" maxlength="19" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="TACP-XXXX-XXXX-XXXX">';
+const isBiz=()=>S.set.ed==='business',devId=()=>{if(!S.set.dev){S.set.dev=uid()+uid();save()}return S.set.dev};
+const stKey={id:'key',render:(el,c)=>{el.innerHTML='<div class="big">'+ic('key')+'</div><h2>'+T.keyT+'</h2><input class="kin" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="19" autocomplete="off" autocapitalize="characters" spellcheck="false">';
   const f=el.querySelector('input');f.value=(c.D.keyTxt||'').replace(/(.{4})(?=.)/g,'$1-');
   f.oninput=()=>{const v=f.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,16);c.D.keyTxt=v;f.value=v.replace(/(.{4})(?=.)/g,'$1-');c.err('')};f.onkeydown=e=>{if(e.key==='Enter')c.next()}},
-  check:D=>{const r=keyCheck(D.keyTxt||'');if(!r)return T.keyErr;D.ed=r.ed;D.keyh=r.h;return true}};
+  wait:'…',check:async D=>{const r=keyCheck(D.keyTxt||'');if(!r)return T.keyErr;
+   if(window.TK_URL){let j;try{const res=await fetch(TK_URL+(TK_URL.includes('?')?'&':'?')+'action=redeem&h='+r.h+'&d='+encodeURIComponent(devId()));j=await res.json()}catch(e){return T.keyNet}
+    if(!j||!j.ok)return j&&j.err==='used'?T.keyUsed:T.keyErr}
+   D.ed=r.ed;D.keyh=r.h;return true}};
 const stEdition={id:'ed',render:(el,c)=>{const b=c.D.ed==='business';
   el.innerHTML='<div class="big">'+ic(b?'ruler':'pc')+'</div><h1>'+(b?T.edB:T.edP)+'</h1><p>'+(b?T.edBd:T.edPd)+'</p>'+(b?'<div class="uses"><span class="chip on">'+ic('ruler')+T.tools.ruler+'</span><span class="chip on">'+ic('stamp')+T.tools.stamp+'</span><span class="chip on">'+ic('sticky')+T.tools.sticky+'</span></div>':'')}};
 function edWizard(cancel){wizard([stKey,stEdition],D=>{S.set.ed=D.ed;S.set.key=D.keyh;delete S.set.lock;save();greet()},cancel?()=>{}:undefined)}

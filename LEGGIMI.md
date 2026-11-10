@@ -33,6 +33,11 @@ Se cancelli l'app dalla Home o i dati del sito da Safari, gli appunti si perdono
 - Il PDF esportato contiene le pagine come immagini (non testo selezionabile).
 - Scorciatoie da tastiera ⌘ funzionano solo con tastiera collegata.
 
+## Novità della versione 1.10.3 – codici monouso attivi
+Il registro dei codici è già creato e collegato (`www/config.js`). Un codice, una volta attivato su un iPad, non funziona più su un altro: serve internet solo al momento dell'inserimento. Lo stesso iPad può rimetterlo; un altro iPad vede "Questo codice è già stato usato".
+Il registro è un Google Foglio privato nel tuo account Google (le prime 2 righe sono segnaposto, non toccarle). Per liberare un codice (es. hai reinstallato l'app) cancella la riga corrispondente nel foglio.
+Dopo l'aggiornamento carica su GitHub la cartella `www` e `package.json` e rifai la build.
+
 ## Novità della versione 1.9.1
 - **Scrivere su PDF**: già presente. Importa il PDF dalla home ("Importa → Importa PDF"): ogni pagina diventa un foglio su cui scrivi, disegni, evidenzi, firmi e metti timbri.
 - **Scrivere su foto**: già presente. Con l'icona delle immagini in alto inserisci una foto nel foglio e ci scrivi sopra con qualsiasi penna.
