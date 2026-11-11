@@ -1,0 +1,14 @@
+#!/bin/bash
+# Chiede la lingua al termine dell'installazione e la salva per Taccuino.
+U=$(stat -f%Su /dev/console 2>/dev/null)
+[ -z "$U" ] || [ "$U" = "root" ] && exit 0
+UID_=$(id -u "$U")
+H=$(dscl . -read /Users/"$U" NFSHomeDirectory 2>/dev/null | awk '{print $2}')
+[ -z "$H" ] && exit 0
+CH=$(launchctl asuser "$UID_" sudo -u "$U" osascript -e 'set l to choose from list {"Italiano", "English", "Español"} with title "Taccuino" with prompt "Scegli la lingua / Choose your language / Elige el idioma:" default items {"Italiano"} OK button name "OK" cancel button name "Italiano"' 2>/dev/null)
+case "$CH" in English) N=1;; Español) N=2;; *) N=0;; esac
+D="$H/Library/Application Support/Taccuino"; F="$D/config.json"
+mkdir -p "$D"
+echo "{\"lang\":$N}" > "$F"
+chown -R "$U" "$D"
+exit 0

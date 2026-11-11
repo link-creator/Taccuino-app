@@ -1,4 +1,45 @@
-{"name":"taccuino-ipad","version":"1.10.3","private":true,
- "scripts":{"prep":"mkdir -p www/lib && cp node_modules/pdfjs-dist/build/pdf.min.js node_modules/pdfjs-dist/build/pdf.worker.min.js www/lib/"},
- "dependencies":{"@capacitor/core":"^6.2.0","@capacitor/ios":"^6.2.0","pdfjs-dist":"3.11.174"},
- "devDependencies":{"@capacitor/cli":"^6.2.0"}}
+{
+  "name": "taccuino",
+  "productName": "Taccuino",
+  "version": "2.0.0",
+  "description": "App per appunti scritti a mano",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --mac pkg",
+    "prebuild": "chmod +x build/pkg-scripts/*"
+  },
+  "devDependencies": {
+    "electron": "32.3.3",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "it.taccuino.app",
+    "productName": "Taccuino",
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "splash.html",
+      "package.json",
+      "assets/**",
+      "node_modules/pdfjs-dist/build/pdf.min.js",
+      "node_modules/pdfjs-dist/build/pdf.worker.min.js",
+      "keys.js",
+      "config.js"
+    ],
+    "mac": {
+      "target": "pkg",
+      "category": "public.app-category.productivity",
+      "icon": "build/icon.png"
+    },
+    "pkg": {
+      "installLocation": "/Applications",
+      "license": "build/resources/license.txt",
+      "welcome": "build/resources/welcome.html"
+    }
+  },
+  "dependencies": {
+    "pdfjs-dist": "3.11.174"
+  }
+}
